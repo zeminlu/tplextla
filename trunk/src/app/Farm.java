@@ -4,16 +4,29 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Set;
+
 
 public class Farm {
 	private HashMap<String,Animal> animalPreferences;
 	private HashSet<Food> availableFood;
+	private PriorityQueue<Food> popularityQueue;
 	private Animal currentAnimal;
 	
 	public Farm() {
 		this.animalPreferences = new HashMap<String, Animal>();
 		this.availableFood = new HashSet<Food>();
+		
+	}
+	
+	public void printPopularFood() {
+		this.popularFood();
+		Food food;
+		while(!this.popularityQueue.isEmpty()){
+			food = this.popularityQueue.poll();
+			System.out.println("Food " + food + " Popularity = " + food.getPopularity());
+		}
 		
 	}
 	
@@ -161,4 +174,21 @@ public class Farm {
 		}
 	}
 	
+	private void popularFood() {
+		this.clearPopularity();
+		for(Food farmFood : this.availableFood) {
+			for(Animal animal : this.animalPreferences.values()) {
+				if(animal.getDietPreferences().contains(farmFood)) {
+					farmFood.vote();
+				}
+			}
+		}
+		this.popularityQueue = new PriorityQueue<Food>(this.availableFood);
+	}
+	
+	private void clearPopularity() {
+		for(Food farmFood : this.availableFood) {
+			farmFood.resetPopularity();
+		}
+	}
 }

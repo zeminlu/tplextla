@@ -1,14 +1,28 @@
 package app;
 
 
-public class Food {
+public class Food implements Comparable<Food> {
 	static final String referenceValue = "idem ";
 	private String name;
+	private int popularity;
 
 	public Food(String name) {
 		this.name = name.trim();
+		this.popularity = 0;
 	}
 	
+	public void vote() {
+		this.popularity++;
+	}
+	
+	public void resetPopularity() {
+		this.popularity = 0;
+	}
+	
+	public int getPopularity() {
+		return popularity;
+	}
+
 	@Override
 	public String toString() {
 		return "Food " + name;
@@ -53,6 +67,12 @@ public class Food {
 	
 	public String getReferece() {
 		return this.name.substring(referenceValue.length());
+	}
+
+	@Override
+	public int compareTo(Food o) {
+		return o.popularity - this.popularity;
+		
 	}
 	
 }
