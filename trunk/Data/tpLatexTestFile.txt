@@ -1,0 +1,2 @@
+Animales: Perro: frutilla, mora, idem cabra, frambuesa, tomate cherry. Cabra: zanahoria, frutilla. Vaca: idem caballo, idem oveja. Gato: batata, idem Vaca. Caballo: manzana, idem Gato.
+Plantas: Frutilla, mora, Frambuesa, zanahoria, papa,tomate cherry.
