@@ -45,9 +45,12 @@ System.out.println("Dietas que no tien el granjero");
 System.out.println(farm.absentDiet());
 
 System.out.println("---------------------------------------------------------------------------------------------------");
-//System.out.println("Plantas disponibles" + farm.getAvailablePlants());
+farm.printPopularFood();
+
+System.out.println("---------------------------------------------------------------------------------------------------");
 farm.printAnimals();
 farm.printFood();
+
 
 System.out.println("Fin de programa.");
 %eof} 
